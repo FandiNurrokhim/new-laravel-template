@@ -2,51 +2,21 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Str;
-use App\Models\ActivityLog;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Authenticatable
+class GraveDetail extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    use HasFactory;
     protected $fillable = [
-        'username',
-        'uuid',
-        'email',
-        'status',
-        'password',
+        'grave_location_id',
+        'name',
+        'birth_date',
+        'death_date',
+        'javanese_day',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
 
     protected static function booted()
     {
@@ -62,10 +32,10 @@ class User extends Authenticatable
 
             ActivityLog::create([
                 'user_id' => auth()->check() ? auth()->id() : null,
-                'action' => 'CREATED_USER',
-                'target_table' => 'users',
+                'action' => 'CREATED_DETAIL',
+                'target_table' => 'grave_details',
                 'target_id' => $model->id,
-                'description' => 'New user created: ' . $model->username,
+                'description' => 'New grave detail created: ' . $model->name,
                 'ip_address' => $ip,
                 'user_agent' => $agent,
                 'metadata' => json_encode([
@@ -82,10 +52,10 @@ class User extends Authenticatable
 
             ActivityLog::create([
                 'user_id' => auth()->check() ? auth()->id() : null,
-                'action' => 'UPDATED_USER',
-                'target_table' => 'users',
+                'action' => 'UPDATED_DETAIL',
+                'target_table' => 'grave_details',
                 'target_id' => $model->id,
-                'description' => 'User updated: ' . $model->username,
+                'description' => 'Grave detail updated: ' . $model->name,
                 'ip_address' => $ip,
                 'user_agent' => $agent,
                 'metadata' => json_encode([
@@ -101,23 +71,18 @@ class User extends Authenticatable
 
             ActivityLog::create([
                 'user_id' => auth()->check() ? auth()->id() : null,
-                'action' => 'DELETED_USER',
-                'target_table' => 'users',
+                'action' => 'DELETED_DETAIL',
+                'target_table' => 'grave_details',
                 'target_id' => $model->id,
-                'description' => 'User deleted: ' . $model->username,
+                'description' => 'Grave detail deleted: ' . $model->name,
                 'ip_address' => $ip,
                 'user_agent' => $agent,
             ]);
         });
     }
 
-    public function profile()
+    public function location()
     {
-        return $this->hasOne(UserProfile::class, 'user_id', 'id');
-    }
-
-    public function graveRequests()
-    {
-        return $this->hasMany(GraveRequest::class);
+        return $this->belongsTo(GraveLocation::class);
     }
 }
