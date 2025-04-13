@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('grave_locations', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('grave_group_id')->constrained()->onDelete('cascade');
             $table->string('code')->unique();  
+            $table->integer('order')->default(0);
             $table->boolean('is_reserved')->default(false); 
             $table->boolean('is_confirmed')->default(false);
             $table->timestamps();

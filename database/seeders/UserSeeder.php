@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         // 1) Super Admin
         // ------------------------------------------------
         $superAdmin = User::firstOrCreate(
-            ['email' => 'admin@rrslide-library.com'],
+            ['email' => 'admin@demo.com'],
             [
                 'username' => 'superadmin',
                 'password' => Hash::make('password'),
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
                 'status' => 'ACTIVE',
             ]
         );
-        $management->assignRole('Management');
+        $management->assignRole('User');
 
         $management->profile()->updateOrCreate(
             [],

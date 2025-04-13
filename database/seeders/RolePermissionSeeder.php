@@ -12,7 +12,7 @@ class RolePermissionSeeder extends Seeder
     {
         // Roles
         $superAdmin = Role::firstOrCreate(['name' => 'Super Admin']);
-        $management = Role::firstOrCreate(['name' => 'Management']);
+        $management = Role::firstOrCreate(['name' => 'User']);
         $operator = Role::firstOrCreate(['name' => 'Operator']);
 
         // For user addin
@@ -28,17 +28,9 @@ class RolePermissionSeeder extends Seeder
             'users',
 
             // MASTER DATA
-            'vendors',
-            'products',
-            'sections',
-            'categories',
-            'sub-categories',
-            'file-formats',
-            'items',
-
-            // TRANSACTION
-            'subscriptions',
-            'licenses',
+            'grave',
+            'grave-group',
+            'grave-request',
 
             // SYSTEM
             'settings',
@@ -54,19 +46,12 @@ class RolePermissionSeeder extends Seeder
 
         $management->syncPermissions([
             'dashboard',
-            'subscriptions',
-            'licenses',
+            'grave-request',
         ]);
 
         $operator->syncPermissions([
-            'dashboard',
-            'vendors',
-            'products',
-            'sections',
-            'categories',
-            'sub-categories',
-            'file-formats',
-            'items',
+            'grave',
+            'grave-group',
         ]);
     }
 }

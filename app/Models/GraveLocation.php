@@ -10,9 +10,12 @@ class GraveLocation extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'code',
         'grave_group_id',
+        'order',
         'location_name',
-        'is_available',
+        'is_confirmed',
+        'is_reserved',
     ];
 
     protected static function booted()
@@ -88,8 +91,16 @@ class GraveLocation extends Model
         return $this->hasOne(GraveRequest::class);
     }
 
-    public function detail()
+    public function corpseDetail()
     {
-        return $this->hasOne(GraveDetail::class);
+        return $this->hasOne(CorpseDetail::class, 'grave_location_id', 'id');
+    }
+
+    public function getCorpsesCount() {
+        return $this->hasMany(CorpseDetail::class)->where('grave_location_id', $this->id)->count();
+    }
+
+    public function isUsed() {
+        return $this->corpseDetail()->exists() || $this->request()->exists();
     }
 }

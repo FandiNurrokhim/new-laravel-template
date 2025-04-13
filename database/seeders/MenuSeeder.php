@@ -55,84 +55,31 @@ class MenuSeeder extends Seeder
 
         Menu::create([
             'type' => 'HEADER',
-            'title' => 'Master Data'
+            'title' => 'Manajemen Kuburan'
         ]);
 
         Menu::create([
             'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Vendors',
-            'icon' => 'bx bx-file',
-            'route' => 'vendors.index'
+            'header' => 'Manajemen Kuburan',
+            'title' => 'Kelola Mayit',
+            'icon' => 'bx bx-user-circle', 
+            'route' => 'grave.index'
         ]);
-
+        
         Menu::create([
             'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Products',
-            'icon' => 'bx bx-file',
-            'route' => 'products.index'
+            'header' => 'Manajemen Kuburan',
+            'title' => 'Kelompok Kuburan',
+            'icon' => 'bx bx-group', // Updated icon
+            'route' => 'grave-group.index'
         ]);
-
+        
         Menu::create([
             'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Sections',
-            'icon' => 'bx bx-file',
-            'route' => 'sections.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Categories',
-            'icon' => 'bx bx-file',
-            'route' => 'categories.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Sub Categories',
-            'icon' => 'bx bx-file',
-            'route' => 'sub-categories.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'File Formats',
-            'icon' => 'bx bx-file',
-            'route' => 'file-formats.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Master Data',
-            'title' => 'Items',
-            'icon' => 'bx bx-file',
-            'route' => 'items.index'
-        ]);
-
-        Menu::create([
-            'type' => 'HEADER',
-            'title' => 'Transaction'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Transaction',
-            'title' => 'Subscriptions',
-            'icon' => 'bx bx-tag',
-            'route' => 'subscriptions.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'Transaction',
-            'title' => 'Licenses',
-            'icon' => 'bx bx-receipt',
-            'route' => 'licenses.index'
+            'header' => 'Manajemen Kuburan',
+            'title' => 'Permintaan Lokasi',
+            'icon' => 'bx bx-map', // Updated icon
+            'route' => 'grave-request.index'
         ]);
 
         Menu::create([

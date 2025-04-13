@@ -6,13 +6,16 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class GraveDetail extends Model
+class CorpseDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
         'grave_location_id',
         'name',
+        'photo',
         'birth_date',
+        'birth_place',
+        'age',
         'death_date',
         'javanese_day',
     ];
@@ -83,6 +86,11 @@ class GraveDetail extends Model
 
     public function location()
     {
-        return $this->belongsTo(GraveLocation::class);
+        return $this->belongsTo(GraveLocation::class, 'grave_location_id', 'id');
+    }
+
+    public function group()
+    {
+        return $this->hasOneThrough(GraveGroup::class, GraveLocation::class, 'id', 'id', 'grave_location_id', 'grave_group_id');
     }
 }

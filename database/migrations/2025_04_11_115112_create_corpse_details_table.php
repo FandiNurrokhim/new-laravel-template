@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grave_details', function (Blueprint $table) {
+        Schema::create('corpse_details', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('grave_location_id')->constrained()->onDelete('cascade');
     
             $table->string('name');
+            $table->text('photo')->nullable();
             $table->date('birth_date')->nullable();
+            $table->string('birth_place')->nullable();
+            $table->integer('age')->nullable();
             $table->date('death_date')->nullable();
             $table->string('javanese_day')->nullable();
             $table->timestamps();

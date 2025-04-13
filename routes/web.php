@@ -1,18 +1,17 @@
 <?php
 
-use App\Http\Controllers\MasterData\ItemController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\MasterData\CategoryController;
-use App\Http\Controllers\MasterData\ProductController;
-use App\Http\Controllers\MasterData\SectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RBAC\MenuController;
 use App\Http\Controllers\RBAC\RoleController;
 use App\Http\Controllers\Users\UserController;
-use App\Http\Controllers\RBAC\AccessControlController;
+use App\Http\Controllers\Grave\GraveController;
+use App\Http\Controllers\MasterData\ItemController;
+use App\Http\Controllers\Grave\GraveGroupController;
 use App\Http\Controllers\MasterData\VendorController;
+use App\Http\Controllers\RBAC\AccessControlController;
 use App\Http\Controllers\MasterData\FileFormatController;
 use App\Http\Controllers\MasterData\SubCategoryController;
 use App\Http\Controllers\Transaction\SubscriptionController;
@@ -53,33 +52,10 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     // Master Data (Super Admin & Operator)
     Route::resource('vendors', VendorController::class)->middleware('check.permission:vendors');
 
-    Route::get('products/get-next-order-number', [ProductController::class, 'getNextOrderNumber'])
-    ->name('products.get-next-order-number')
-    ->middleware('check.permission:products');
-    Route::resource('products',ProductController::class)->middleware('check.permission:products');
-    
-    Route::get('sections/get-next-order-number', [SectionController::class, 'getNextOrderNumber'])
-    ->name('sections.get-next-order-number')
-    ->middleware('check.permission:sections');
-    Route::resource('sections',SectionController::class)->middleware('check.permission:sections');
-
-    Route::get('categories/get-next-order-number', [CategoryController::class, 'getNextOrderNumber'])
-    ->name('categories.get-next-order-number')
-    ->middleware('check.permission:categories');
-    Route::resource('categories', CategoryController::class)->middleware('check.permission:categories');
-    
-
-    Route::resource('sub-categories', SubCategoryController::class)->middleware('check.permission:sub-categories');
-    Route::resource('file-formats', FileFormatController::class)->middleware('check.permission:file-formats');
-    Route::resource('items', ItemController::class)->middleware('check.permission:items');
-    Route::get('/item/products', [ItemController::class, 'getProducts']);
-    Route::get('/item/sections', [ItemController::class, 'getSections']);
-    Route::get('/item/categories', [ItemController::class, 'getCategories']);
-    Route::get('/item/sub-categories', [ItemController::class, 'getSubCategories']);
-
-
-    // Transaction (Super Admin & Management)
-    Route::resource('subscriptions', SubscriptionController::class)->middleware('check.permission:subscriptions');
+    Route::resource('grave', GraveController::class)->middleware('check.permission:grave');
+    Route::resource('grave-group', GraveGroupController::class)->middleware('check.permission:grave-group');
+    Route::resource('grave-request', GraveGroupController::class)->middleware('check.permission:grave-request');
+    Route::get('api/grave-locations/{groupId}', [GraveController::class, 'fetchLocations'])->name('grave-locations.fetch');
 
     Route::get('licenses', fn() => 'PAGE LICENSES')
         ->name('licenses.index')

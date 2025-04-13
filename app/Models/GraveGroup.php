@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class GraveGroup extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'max_graves', 'unused_graves', 'used_graves', 'is_full'];
 
 
     protected static function booted()

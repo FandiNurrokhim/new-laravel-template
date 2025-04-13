@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('grave_groups', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('name')->unique();
             $table->integer('max_graves');  
+            $table->integer('unused_graves')->default(0);
+            $table->integer('used_graves')->default(0);
+            $table->boolean('is_full')->default(false);
             $table->timestamps();
         });
     }
