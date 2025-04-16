@@ -20,10 +20,28 @@ class GraveController extends Controller
 
                 return DataTables::of($data)
                     ->addColumn('location_code', function ($row) {
-                        return $row->location->code ?? 'N/A';
+                        $code = $row->location->code ?? 'N/A';
+                        return '<span class="badge bg-dark">' . $code . '</span>';
                     })
                     ->addColumn('group_name', function ($row) {
-                        return $row->location->group->name ?? 'N/A';
+                        $name = $row->group->name ?? 'N/A';
+                        return '<span class="badge bg-dark">' . $name . '</span>';
+                    })
+                    ->addColumn('birth_date', function ($row) {
+                        return $row->birth_date ? \Carbon\Carbon::parse($row->birth_date)->format('d-m-Y') : 'N/A';
+                    })
+                    ->addColumn('death_date', function ($row) {
+                        return $row->death_date ? \Carbon\Carbon::parse($row->death_date)->format('d-m-Y') : 'N/A';
+                    })
+                    ->addColumn('javanese_death_date', function ($row) {
+                        if ($row->death_date) {
+                            $deathDate = new \DateTime($row->death_date);
+                            $day = $deathDate->format('d'); 
+                            $year = $deathDate->format('Y'); 
+                            $javaneseDay = $row->javanese_day ?? 'N/A';
+                            return $day . ' ' . $javaneseDay . ' ' . $year;
+                        }
+                        return 'N/A';
                     })
                     ->addColumn('actions', function ($row) {
                         $btn = '<button class="btn btn-info btn-sm me-1 btn-detail" data-id="' . $row->id . '">
@@ -37,7 +55,7 @@ class GraveController extends Controller
                             </button>';
                         return $btn;
                     })
-                    ->rawColumns(['actions', 'location_code', 'group_name'])
+                    ->rawColumns(['actions', 'location_code', 'group_name', 'birth_date', 'death_date', 'javanese_death_date'])
                     ->make(true);
             }
 

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             IconSeeder::class,
             MenuSeeder::class,
             GraveSeeder::class,
+            GraveRequestSeeder::class,
         ]);
     }
 }

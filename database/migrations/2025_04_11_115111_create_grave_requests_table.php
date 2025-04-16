@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('grave_requests', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('requester_name'); 
+            $table->string('phone_number'); 
+            $table->string('address'); 
+            $table->string('rt')->nullable(); 
+            $table->string('rw')->nullable(); 
+            $table->string('dusun')->nullable(); 
+            $table->string('corpse_name');
             $table->foreignId('grave_location_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('notes')->nullable(); 

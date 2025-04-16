@@ -52,14 +52,14 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
-                                    <th>Birth Date</th>
-                                    <th>Death Date</th>
-                                    <th>Age</th>
-                                    <th>Javanese Day</th>
-                                    <th>Grave Location</th>
-                                    <th>Grave Group</th>
-                                    <th>Actions</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Tanggal Meninggal</th>
+                                    <th>Umur saat Meninggal</th>
+                                    <th>Weton saat meninggal</th>
+                                    <th>Lokasi Kuburan</th>
+                                    <th>Grup Makam</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                         </table>
@@ -216,18 +216,20 @@
                         name: 'age'
                     },
                     {
-                        data: 'javanese_day',
-                        name: 'javanese_day'
+                        data: 'javanese_death_date',
+                        name: 'javanese_death_date'
                     },
                     {
-                        data: 'location.code',
-                        name: 'location.code',
-                        defaultContent: 'N/A'
+                        data: 'location_code',
+                        name: 'location_code',
+                        orderable: false,
+                        searchable: false
                     },
                     {
-                        data: 'location.group.name',
-                        name: 'location.group.name',
-                        defaultContent: 'N/A'
+                        data: 'group_name',
+                        name: 'group_name',
+                        orderable: false,
+                        searchable: false
                     },
                     {
                         data: 'actions',

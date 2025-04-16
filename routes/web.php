@@ -10,6 +10,7 @@ use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\Grave\GraveController;
 use App\Http\Controllers\MasterData\ItemController;
 use App\Http\Controllers\Grave\GraveGroupController;
+use App\Http\Controllers\Grave\GraveRequestController;
 use App\Http\Controllers\MasterData\VendorController;
 use App\Http\Controllers\RBAC\AccessControlController;
 use App\Http\Controllers\MasterData\FileFormatController;
@@ -54,7 +55,7 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 
     Route::resource('grave', GraveController::class)->middleware('check.permission:grave');
     Route::resource('grave-group', GraveGroupController::class)->middleware('check.permission:grave-group');
-    Route::resource('grave-request', GraveGroupController::class)->middleware('check.permission:grave-request');
+    Route::resource('grave-request', GraveRequestController::class)->middleware('check.permission:grave-request');
     Route::get('api/grave-locations/{groupId}', [GraveController::class, 'fetchLocations'])->name('grave-locations.fetch');
 
     Route::get('licenses', fn() => 'PAGE LICENSES')

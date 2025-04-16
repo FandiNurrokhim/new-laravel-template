@@ -10,9 +10,16 @@ class GraveRequest extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
+        'requester_name',
+        'address',
+        'phone_number',
+        'rt',
+        'rw',
+        'dusun',
+        'corpse_name',
         'grave_location_id',
-        'is_confirmed',
+        'status',
+        'notes',
     ];
 
     protected static function booted()
@@ -76,11 +83,6 @@ class GraveRequest extends Model
                 'user_agent' => $agent,
             ]);
         });
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function location()
