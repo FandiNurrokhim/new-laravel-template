@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/libs/highlight/highlight.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/quill/katex.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/quill/editor.css') }}" />
-    
+
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/typeahead-js/typeahead.css') }}" />
@@ -53,7 +53,8 @@
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
                             © {{ date('Y') }}, made with ❤️ by
-                            <a href="https://estontinc.com" target="_blank" class="footer-link fw-bolder">Estontinc</a>
+                            <a href="https://Makan Purwosari.com" target="_blank" class="footer-link fw-bolder">Makan
+                                Purwosari</a>
                         </div>
                     </div>
                 </footer>
@@ -124,13 +125,14 @@
     <script>
         function verificationForLogout() {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You will be logged out from the system!",
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan keluar dari sistem!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, log me out!'
+                confirmButtonText: 'Ya, keluar!',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('logout-form').submit();

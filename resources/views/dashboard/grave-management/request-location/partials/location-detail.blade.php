@@ -6,6 +6,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="text-center mb-4">
+                    <h5 class="role-title">Lokasi berada di kelompok: <span class="fw-bold" id="group-name"></span></h5>
+                </div>
+
                 <div class="d-flex flex-wrap grave-box-container">
                     <!-- Lokasi akan di-render di sini -->
                 </div>

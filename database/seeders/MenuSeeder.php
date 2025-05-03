@@ -81,34 +81,5 @@ class MenuSeeder extends Seeder
             'icon' => 'bx bx-map', // Updated icon
             'route' => 'grave-request.index'
         ]);
-
-        Menu::create([
-            'type' => 'HEADER',
-            'title' => 'System'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'System',
-            'title' => 'System Settings',
-            'icon' => 'bx bx-key',
-            'route' => 'settings.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'System',
-            'title' => 'Activity Log',
-            'icon' => 'bx bx-list-ul',
-            'route' => 'activity-log.index'
-        ]);
-
-        Menu::create([
-            'type' => 'PARENT',
-            'header' => 'System',
-            'title' => 'Search Logs',
-            'icon' => 'bx bx-search',
-            'route' => 'search-logs.index'
-        ]);
     }
 }

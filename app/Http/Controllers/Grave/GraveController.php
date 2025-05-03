@@ -36,9 +36,9 @@ class GraveController extends Controller
                     ->addColumn('javanese_death_date', function ($row) {
                         if ($row->death_date) {
                             $deathDate = new \DateTime($row->death_date);
-                            $day = $deathDate->format('d'); 
-                            $year = $deathDate->format('Y'); 
-                            $javaneseDay = $row->javanese_day ?? 'N/A';
+                            $day = $row->javanese_day_death;
+                            $year = $deathDate->format('Y');
+                            $javaneseDay = $row->javanese_weton ?? 'N/A';
                             return $day . ' ' . $javaneseDay . ' ' . $year;
                         }
                         return 'N/A';
@@ -80,7 +80,8 @@ class GraveController extends Controller
                 'birth_date' => 'nullable|date',
                 'birth_place' => 'nullable|string|max:255',
                 'death_date' => 'nullable|date',
-                'javanese_day' => 'nullable|string|max:255',
+                'javanese_day' => 'required|in:Minggu,Senin,Selasa,Rabu,Kamis,Jumat,Sabtu', // Validasi ENUM
+                'javanese_weton' => 'required|in:Legi,Pahing,Pon,Wage,Kliwon', // Validasi ENUM
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk gambar
             ]);
 
@@ -98,6 +99,10 @@ class GraveController extends Controller
 
             $age = $validated['birth_date'] ? now()->diffInYears($validated['birth_date']) : null;
             $validated['age'] = $age;
+
+            // Map `javanese_day` to `javanese_day_death`
+            $validated['javanese_day_death'] = $validated['javanese_day'];
+            unset($validated['javanese_day']); // Remove the temporary field
 
             // Create the CorpseDetail
             $corpseDetail = CorpseDetail::create($validated);
@@ -149,12 +154,17 @@ class GraveController extends Controller
                 'birth_date' => 'nullable|date',
                 'birth_place' => 'nullable|string|max:255',
                 'death_date' => 'nullable|date',
-                'javanese_day' => 'nullable|string|max:255',
+                'javanese_day' => 'required|in:Minggu,Senin,Selasa,Rabu,Kamis,Jumat,Sabtu', // Validasi ENUM
+                'javanese_weton' => 'required|in:Legi,Pahing,Pon,Wage,Kliwon', // Validasi ENUM
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk gambar
             ]);
 
             // Perbarui gambar jika ada
             $validated['photo'] = $this->updateImage($request->file('photo'), $corpseDetail->photo);
+
+            // Map `javanese_day` to `javanese_day_death`
+            $validated['javanese_day_death'] = $validated['javanese_day'];
+            unset($validated['javanese_day']); // Remove the temporary field
 
             // Check if the grave location is changing
             if ($corpseDetail->grave_location_id !== $validated['grave_location_id']) {
@@ -235,11 +245,17 @@ class GraveController extends Controller
     public function fetchLocations($groupId)
     {
         try {
+            $group = GraveGroup::findOrFail($groupId);
+    
             $locations = GraveLocation::where('grave_group_id', $groupId)
-                ->with('corpseDetail') // Include corpse details to check if the location is occupied
+                ->with('corpseDetail')
                 ->get(['id', 'code', 'grave_group_id']);
-
-            return response()->json(['success' => true, 'data' => $locations]);
+    
+            return response()->json([
+                'success' => true,
+                'group_name' => $group->name,
+                'data' => $locations,
+            ]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }

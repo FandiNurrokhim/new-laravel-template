@@ -49,8 +49,21 @@
                         <input type="date" class="form-control" id="edit_death_date" name="death_date" max="{{ date('Y-m-d') }}">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_javanese_day" class="form-label">Weton</label>
-                        <select class="form-select" id="edit_javanese_day" name="javanese_day">
+                        <label for="edit_javanese_weton" class="form-label">Hari Meniggal</label>
+                        <select class="form-select" id="edit_javanese_day_death" name="javanese_day" required>
+                            <option value="" disabled selected>Pilih Hari</option>
+                            <option value="Minggu">Minggu</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_javanese_weton" class="form-label">Weton</label>
+                        <select class="form-select" id="edit_javanese_weton" name="javanese_weton" required>
                             <option value="" disabled selected>Pilih Weton</option>
                             <option value="Legi">Legi</option>
                             <option value="Pahing">Pahing</option>

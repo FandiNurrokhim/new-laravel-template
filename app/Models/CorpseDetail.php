@@ -18,7 +18,8 @@ class CorpseDetail extends Model
         'birth_place',
         'age',
         'death_date',
-        'javanese_day',
+        'javanese_weton_death',
+        'javanese_weton',
     ];
 
 

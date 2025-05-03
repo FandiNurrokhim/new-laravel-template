@@ -6,12 +6,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link d-flex align-items-center">
-            <span class="app-brand-logo demo">
-                <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="30">
-            </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <img src="{{ asset('img/text-logo.svg') }}" alt="Logo" width="80">
-            </span>
+           Makam Purwosari
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>

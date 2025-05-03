@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home-layout')
 
 @section('title', 'Manajemen Permintaan Lokasi Makam')
 
@@ -20,7 +20,6 @@
                             <th>Nama Mayit</th>
                             <th>Lokasi Makam</th>
                             <th>Status</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                 </table>
@@ -37,7 +36,7 @@
             var table = $('#grave-request-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('grave-request.index') }}',
+                ajax: '{{ route('request-list') }}',
                 order: [
                     [10, 'desc']
                 ],
@@ -94,12 +93,6 @@
                         searchable: false
                     },
                     {
-                        data: 'actions',
-                        name: 'actions',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
                         data: 'updated_at',
                         name: 'updated_at',
                         visible: false
@@ -107,51 +100,12 @@
                 ]
             });
 
-            // Handle dropdown actions
-            $(document).on('click', '.btn-pending', function(e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                updateStatus(id, 'pending');
-            });
-
-            $(document).on('click', '.btn-approve', function(e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                updateStatus(id, 'approved');
-            });
-
-            $(document).on('click', '.btn-reject', function(e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                updateStatus(id, 'rejected');
-            });
-
-            function updateStatus(id, status) {
-                $.ajax({
-                    url: '{{ route('grave-request.update', ':id') }}'.replace(':id', id),
-                    type: 'PUT',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        status: status
-                    },
-                    success: function(response) {
-                        Swal.fire('Success', response.message, 'success');
-                        table.ajax.reload();
-                    },
-                    error: function(xhr) {
-                        Swal.fire('Error', xhr.responseJSON.message, 'error');
-                    }
-                });
-            }
-
-
             $(document).on('click', '.btn-view-location', function() {
                 var groupId = $(this).data('id');
                 var locationId = $(this).data('location-id');
                 if (groupId) {
                     $.get('{{ url('/api/grave-locations') }}/' + groupId, function(response) {
                         if (response.success) {
-                            $('#group-name').text(response.group_name || 'Tidak Diketahui');
                             renderGraveLocations(response.data, '.grave-box-container', locationId);
                             $('#locationViewModal').modal('show');
                         } else {

@@ -19,13 +19,20 @@ class GraveRequestController extends Controller
 
                 return DataTables::of($data)
                     ->editColumn('status', function ($row) {
-                        $label = ucfirst($row->status);
+                        $statusMap = [
+                            'pending' => 'Menunggu',
+                            'approved' => 'Disetujui',
+                            'rejected' => 'Ditolak',
+                        ];
+
+                        $label = $statusMap[$row->status] ?? ucfirst($row->status);
                         $badgeClass = match ($row->status) {
                             'pending' => 'bg-warning',
                             'approved' => 'bg-success',
                             'rejected' => 'bg-danger',
                             default => 'bg-secondary',
                         };
+
                         return '<span class="badge ' . $badgeClass . '">' . $label . '</span>';
                     })
                     ->addColumn('location_view', function ($row) {
@@ -97,7 +104,7 @@ class GraveRequestController extends Controller
                 'notes' => 'nullable|string',
             ]);
 
-            $validated['status'] = 'pending'; // Default status
+            $validated['status'] = 'pending';
 
             GraveRequest::create($validated);
 

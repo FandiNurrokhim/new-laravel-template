@@ -79,6 +79,9 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('grave-group.index') }}',
+                order: [
+                    [7, 'desc']
+                ],
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -108,6 +111,11 @@
                         name: 'actions',
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at',
+                        visible: false
                     }
                 ]
             });

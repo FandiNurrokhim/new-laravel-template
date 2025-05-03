@@ -11,21 +11,33 @@ use App\Http\Controllers\Grave\GraveController;
 use App\Http\Controllers\MasterData\ItemController;
 use App\Http\Controllers\Grave\GraveGroupController;
 use App\Http\Controllers\Grave\GraveRequestController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterData\VendorController;
 use App\Http\Controllers\RBAC\AccessControlController;
 use App\Http\Controllers\MasterData\FileFormatController;
 use App\Http\Controllers\MasterData\SubCategoryController;
 use App\Http\Controllers\Transaction\SubscriptionController;
+use App\Models\GraveRequest;
 
 // Redirect root
 Route::get('/', function () {
-    return Auth::check() ? redirect()->route('dashboard') : redirect()->route('login');
+    return Auth::check() ? redirect()->route('dashboard') : redirect()->route('homepage');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('homepage');
+Route::get('/request', [HomeController::class, 'request'])->name('request');
+Route::get('/request-list', [HomeController::class, 'requestList'])->name('request-list');
+Route::post('/request-send', [GraveRequestController::class, 'store'])->name('create-request');
+
+Route::get('/location-list', [HomeController::class, 'locationList'])->name('location-list');
+Route::get('/corpse-list', [HomeController::class, 'corpseList'])->name('corpse-list');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/api/grave-locations/{groupId}', [GraveController::class, 'fetchLocations'])->name('grave-locations.fetch');
 
 // Dashboard Routes (prefix /dashboard, middleware auth)
 Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
@@ -56,7 +68,6 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     Route::resource('grave', GraveController::class)->middleware('check.permission:grave');
     Route::resource('grave-group', GraveGroupController::class)->middleware('check.permission:grave-group');
     Route::resource('grave-request', GraveRequestController::class)->middleware('check.permission:grave-request');
-    Route::get('api/grave-locations/{groupId}', [GraveController::class, 'fetchLocations'])->name('grave-locations.fetch');
 
     Route::get('licenses', fn() => 'PAGE LICENSES')
         ->name('licenses.index')

@@ -1,0 +1,8 @@
+.paralax {
+    width: 100%;
+    height: 75vh !important; /* Tetapkan tinggi tetap 75vh */
+    background-attachment: fixed; /* Efek parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('birth_place')->nullable();
             $table->integer('age')->nullable();
             $table->date('death_date')->nullable();
-            $table->string('javanese_day')->nullable();
+            $table->enum('javanese_day_death', ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'])->change();
+            $table->enum('javanese_weton', ['Legi', 'Pahing', 'Pon', 'Wage', 'Kliwon'])->change();
             $table->timestamps();
         });
     }

@@ -70,10 +70,10 @@
                     <div class="app-brand mb-5">
                         <a href="index.html" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
-                                <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="40">
+                                <img src="{{ asset('img/Logo purwosari.jpg') }}" alt="Logo" width="40">
                             </span>
                             <span class="app-brand-text demo text-body fw-bolder">
-                                EstontInc
+                                Makan Purwosari
                             </span>
                         </a>
                     </div>

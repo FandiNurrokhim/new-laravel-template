@@ -96,7 +96,7 @@
             graveContainer.empty(); // Clear previous locations
 
             if (groupId) {
-                $.get('{{ url('/dashboard/api/grave-locations') }}/' + groupId, function(response) {
+                $.get('{{ url('/api/grave-locations') }}/' + groupId, function(response) {
                     if (response.success) {
                         // Render grave locations as boxes
                         response.data.forEach(function(location) {
@@ -195,6 +195,9 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('grave.index') }}',
+                order: [
+                    [9, 'desc']
+                ]
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -236,6 +239,11 @@
                         name: 'actions',
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at',
+                        visible: false
                     }
                 ]
             });
@@ -269,7 +277,8 @@
                     $('#edit_birth_date').val(data.data.birth_date);
                     $('#edit_birth_place').val(data.data.birth_place);
                     $('#edit_death_date').val(data.data.death_date);
-                    $('#edit_javanese_day').val(data.data.javanese_day);
+                    $('#edit_javanese_weton').val(data.data.javanese_weton);
+                    $('#edit_javanese_day_death').val(data.data.javanese_day_death);
                     $('#edit_group_id').val(data.data.location.group.id).trigger('change');
 
                     // Fetch and render grave locations for the selected group
@@ -296,7 +305,7 @@
                         var deathDate = corpseDetail.death_date ? new Date(corpseDetail
                             .death_date) : null;
                         var javaneseDeathDate = deathDate ?
-                            deathDate.getDate() + ' ' + (corpseDetail.javanese_day ?? 'N/A') + ' ' +
+                            corpseDetail.javanese_dey_death + ' ' + (corpseDetail.javanese_weton ?? 'N/A') + ' ' +
                             deathDate.getFullYear() :
                             'N/A';
 
@@ -318,7 +327,7 @@
 
                         // Render grave locations using the renderGraveLocations method
                         if (corpseDetail.location.group) {
-                            $.get('{{ url('/dashboard/api/grave-locations') }}/' + corpseDetail
+                            $.get('{{ url('/api/grave-locations') }}/' + corpseDetail
                                 .location.group.id,
                                 function(response) {
                                     if (response.success) {
