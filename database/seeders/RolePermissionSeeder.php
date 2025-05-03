@@ -12,13 +12,6 @@ class RolePermissionSeeder extends Seeder
     {
         // Roles
         $superAdmin = Role::firstOrCreate(['name' => 'Super Admin']);
-        $management = Role::firstOrCreate(['name' => 'User']);
-        $operator = Role::firstOrCreate(['name' => 'Operator']);
-
-        // For user addin
-        Role::firstOrCreate(['name' => 'Subscriber']);
-        Role::firstOrCreate(['name' => 'Guest']);
-
         $permissions = [
             // GENERAL
             'dashboard',
@@ -43,15 +36,5 @@ class RolePermissionSeeder extends Seeder
         }
 
         $superAdmin->syncPermissions($permissions);
-
-        $management->syncPermissions([
-            'dashboard',
-            'grave-request',
-        ]);
-
-        $operator->syncPermissions([
-            'grave',
-            'grave-group',
-        ]);
     }
 }
