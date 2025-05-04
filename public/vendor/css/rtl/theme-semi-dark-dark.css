@@ -1307,7 +1307,7 @@ li.ui-timepicker-selected,
   box-shadow: 0 0 0.375rem 0.25rem rgba(0, 0, 0, 0.15);
 }
 
-.layout-navbar-fixed .layout-page:before {
+.removed-class {
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
   background: linear-gradient(180deg, rgba(35, 35, 51, 0.7) 44%, rgba(35, 35, 51, 0.43) 73%, rgba(35, 35, 51, 0));

@@ -1311,7 +1311,7 @@ li.ui-timepicker-selected,
   border: 1px solid #444564;
 }
 
-.layout-navbar-fixed .layout-page:before {
+.removed-class {
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
   background: linear-gradient(180deg, rgba(43, 44, 64, 0.7) 44%, rgba(43, 44, 64, 0.43) 73%, rgba(43, 44, 64, 0));
