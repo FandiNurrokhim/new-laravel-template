@@ -24,6 +24,23 @@ class GraveLocation extends Model
             if (empty($model->uuid)) {
                 $model->uuid = (string) Str::uuid();
             }
+        
+            if (empty($model->code)) {
+                $lastLocation = self::where('grave_group_id', $model->grave_group_id)
+                    ->orderBy('id', 'desc')
+                    ->first();
+    
+                $lastCode = $lastLocation ? $lastLocation->code : null;
+    
+                if ($lastCode) {
+                    // Ambil angka terakhir dari kode sebelumnya
+                    $number = (int) substr($lastCode, 1);
+                    $model->code = 'A' . str_pad($number + 1, 2, '0', STR_PAD_LEFT);
+                } else {
+                    // Jika belum ada kode, mulai dari A01
+                    $model->code = 'A01';
+                }
+            }
         });
 
         static::created(function ($model) {
