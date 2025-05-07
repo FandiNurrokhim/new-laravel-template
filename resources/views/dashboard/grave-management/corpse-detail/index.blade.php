@@ -36,7 +36,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 pb-0 mb-2">Corpse Details</h4>
         <p class="mb-4">
-            This page is used to manage corpse details. You can add, edit, and delete corpse details here.
+            Halaman ini digunakan untuk mengelola rincian jenazah. Anda dapat menambah, mengedit, dan menghapus detail jenazah di sini.
         </p>
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -197,7 +197,7 @@
                 ajax: '{{ route('grave.index') }}',
                 order: [
                     [9, 'desc']
-                ]
+                ],
                 columns: [{
                         data: 'id',
                         name: 'id'
