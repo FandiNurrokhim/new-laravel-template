@@ -45,25 +45,41 @@
     <script src="{{ asset('vendor/js/template-customizer.js') }}"></script>
     <script src="{{ asset('js/config.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="80" tabindex="0">
     <!-- Content -->
 
     <div
         class="layout-wrapper layout-content-navbar layout-without-menu layout-without-navbar-fixed layout-without-footer">
         <div class="layout-container">
             <div class="layout-page">
-                {{-- Navbar --}}
                 @include('components.landing-page.navbar')
-                @yield('content')
+                {{-- Navbar --}}
+                <div class="py-5">
+                    @yield('content')
+                </div>
                 {{-- Footer --}}
                 @include('components.landing-page.footer')
             </div>
         </div>
     </div>
 
+    {{-- <div id="map"></div> --}}
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!-- / Content -->
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/heroes/hero-1/assets/css/hero-1.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/abouts/about-2/assets/css/about-2.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/facts/fact-5/assets/css/fact-5.css">
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

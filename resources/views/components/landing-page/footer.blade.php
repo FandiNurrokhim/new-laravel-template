@@ -1,19 +1,24 @@
-<footer class="bg-dark text-white py-3 mt-5">
-    <div class="container text-center">
-        <p class="mb-2">&copy; {{ date('Y') }} Makam Purwosari. All rights reserved.</p>
-        <div>
-            <a href="https://facebook.com" class="text-white-50 mx-2" target="_blank">
-                <i class="bi bi-facebook"></i>
-            </a>
-            <a href="https://twitter.com" class="text-white-50 mx-2" target="_blank">
-                <i class="bi bi-twitter"></i>
-            </a>
-            <a href="https://instagram.com" class="text-white-50 mx-2" target="_blank">
-                <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://linkedin.com" class="text-white-50 mx-2" target="_blank">
-                <i class="bi bi-linkedin"></i>
-            </a>
-        </div>
+<section class="bg-dark">
+    <div class="container mx-auto">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="#faq">Faq</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="#informasi">Informasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="/request">Buat Permohonan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="/request-list">Lihat Permohonan</a>
+                </li>
+            </ul>
+            <p class="text-center text-white">© 2025 Makam Purwosari</p>
+        </footer>
     </div>
-</footer>
+</section>

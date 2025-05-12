@@ -1,39 +1,45 @@
-@props(['icon', 'count', 'label'])
-
-<div class="col-md-3 mb-4">
-    <div class="card shadow-sm text-center h-100 border-0">
-        <div class="card-body">
-            <div class="mb-2">
-                <i class='bx {{ $icon }} fs-1 text-primary'></i>
+<section class="bsb-fact-5 py-3 py-md-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                    <h3 class="fs-5 mb-2 text-dark text-center text-uppercase">Our Success</h3>
+                    <h2 class="display-5 mb-5 mb-xl-9 text-center">We have a proven track record of success.</h2>
+                </div>
             </div>
-            <h5 class="card-title fw-bold">
-                <span class="counter" data-target="{{ $count }}">0</span>
-            </h5>
-            <p class="card-text text-muted">{{ $label }}</p>
         </div>
-    </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const counters = document.querySelectorAll(".counter");
-
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute("data-target");
-                const count = +counter.innerText;
-
-                const increment = target / 100;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 15);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-
-            updateCount();
-        });
-    });
-</script>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container-fluid bg-light border shadow">
+                        <div class="row">
+                            <div class="col-12 col-md-4 p-0" data-aos="fade-up">
+                                <div class="card border-0 bg-transparent">
+                                    <div class="card-body text-center p-4 p-xxl-5">
+                                        <h3 class="display-4 fw-bold mb-2">60+</h3>
+                                        <p class="fs-5 mb-0 text-dark">Finished Projects</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 p-0 border-top border-bottom border-start border-end" data-aos="fade-up">
+                                <div class="card border-0 bg-transparent">
+                                    <div class="card-body text-center p-4 p-xxl-5">
+                                        <h3 class="display-4 fw-bold mb-2">18k+</h3>
+                                        <p class="fs-5 mb-0 text-dark">Issues Solved</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 p-0" data-aos="fade-up">
+                                <div class="card border-0 bg-transparent">
+                                    <div class="card-body text-center p-4 p-xxl-5">
+                                        <h3 class="display-4 fw-bold mb-2">10k+</h3>
+                                        <p class="fs-5 mb-0 text-dark">Happy Customers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
