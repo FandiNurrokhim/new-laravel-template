@@ -1,31 +1,35 @@
 @extends('layouts.home-layout')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-4 pt-5">
         <h3 class="text-center mb-4">Request Lokasi Makam</h3>
 
         <form id="requestLocationForm" enctype="multipart/form-data" method="POST" action="{{ route('create-request') }}">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="mb-3">
-                        <label for="grave_location_id" class="form-label">Lokasi Makam <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="grave_location_id" class="form-label">Lokasi Makam <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         @include('components.landing-page.grave-locations', [
                             'graveLocations' => $graveLocations,
                         ])
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="mb-3">
-                        <label for="requester_name" class="form-label">Nama Pemohon <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="requester_name" class="form-label">Nama Pemohon <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <input type="text" class="form-control" id="requester_name" name="requester_name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label">Alamat Pemohon <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="address" class="form-label">Alamat Pemohon <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="phone_number" class="form-label">Nomor Telepon <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="phone_number" class="form-label">Nomor Telepon <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <input type="text" class="form-control" id="phone_number" name="phone_number" required>
                     </div>
                     <div class="mb-3">
@@ -37,11 +41,13 @@
                         <input type="number" class="form-control" id="rw" name="rw" min="1" required>
                     </div>
                     <div class="mb-3">
-                        <label for="dusun" class="form-label">Dusun <span class="text-danger">(wajib Diisi)</span></label>
-                        <input type="text" class="form-control" id="dusun" name="dusun"  required>
+                        <label for="dusun" class="form-label">Dusun <span class="text-danger">(wajib
+                                Diisi)</span></label>
+                        <input type="text" class="form-control" id="dusun" name="dusun" required>
                     </div>
                     <div class="mb-3">
-                        <label for="corpse_name" class="form-label">Nama Mayit <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="corpse_name" class="form-label">Nama Mayit <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <input type="text" class="form-control" id="corpse_name" name="corpse_name" required>
                     </div>
                     <div class="mb-3">
@@ -58,12 +64,14 @@
                         <input type="text" class="form-control" id="birth_place" name="birth_place">
                     </div>
                     <div class="mb-3">
-                        <label for="death_date" class="form-label">Tanggal Meninggal <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="death_date" class="form-label">Tanggal Meninggal <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <input type="date" class="form-control" id="death_date" name="death_date"
                             max="{{ date('Y-m-d') }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="javanese_day" class="form-label">Hari Meninggal <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="javanese_day" class="form-label">Hari Meninggal <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <select class="form-select" id="javanese_day" name="javanese_day" required>
                             <option value="" disabled selected>Pilih Hari</option>
                             <option value="Minggu">Minggu</option>
@@ -76,7 +84,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="javanese_weton" class="form-label">Weton Meninggal <span class="text-danger">(wajib Diisi)</span></label>
+                        <label for="javanese_weton" class="form-label">Weton Meninggal <span class="text-danger">(wajib
+                                Diisi)</span></label>
                         <select class="form-select" id="javanese_weton" name="javanese_weton" required>
                             <option value="" disabled selected>Pilih Weton</option>
                             <option value="Legi">Legi</option>
@@ -90,10 +99,10 @@
                         <label for="notes" class="form-label">Catatan</label>
                         <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
                     </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Kirim Permohonan</button>
+                    </div>
                 </div>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit Request</button>
             </div>
         </form>
     </div>
