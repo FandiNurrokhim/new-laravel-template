@@ -61,7 +61,7 @@
     <div
         class="layout-wrapper layout-content-navbar layout-without-menu layout-without-navbar-fixed layout-without-footer">
         <div class="layout-container">
-            <div class="layout-page">
+            <div class="layout-page bg-white">
                 @include('components.landing-page.navbar')
                 {{-- Navbar --}}
                 <div class="py-5">
