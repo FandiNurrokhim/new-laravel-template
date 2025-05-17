@@ -6,6 +6,7 @@ use App\Models\GraveGroup;
 use App\Models\CorpseDetail;
 use App\Models\GraveLocation;
 use App\Models\GraveRequest;
+use COM;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -42,31 +43,35 @@ class HomeController extends Controller
                 $data = GraveRequest::get();
 
                 return DataTables::of($data)
-                ->editColumn('status', function ($row) {
-                    $statusMap = [
-                        'pending' => 'Menunggu',
-                        'approved' => 'Disetujui',
-                        'rejected' => 'Ditolak',
-                    ];
-                
-                    $label = $statusMap[$row->status] ?? ucfirst($row->status);
-                    $badgeClass = match ($row->status) {
-                        'pending' => 'bg-warning',
-                        'approved' => 'bg-success',
-                        'rejected' => 'bg-danger',
-                        default => 'bg-secondary',
-                    };
-                
-                    return '<span class="badge ' . $badgeClass . '">' . $label . '</span>';
-                })
+                    ->editColumn('status', function ($row) {
+                        $statusMap = [
+                            'pending' => 'Menunggu',
+                            'approved' => 'Disetujui',
+                            'rejected' => 'Ditolak',
+                        ];
+
+                        $label = $statusMap[$row->status] ?? ucfirst($row->status);
+                        $badgeClass = match ($row->status) {
+                            'pending' => 'bg-warning',
+                            'approved' => 'bg-success',
+                            'rejected' => 'bg-danger',
+                            default => 'bg-secondary',
+                        };
+
+                        return '<span class="badge ' . $badgeClass . '">' . $label . '</span>';
+                    })
                     ->addColumn('location_view', function ($row) {
                         return '<button class="btn btn-info btn-sm btn-view-location" data-id="' . $row->location->group->id . '" data-location-id="' . $row->grave_location_id . '">Lihat Lokasi</button>';
                     })
                     ->rawColumns(['status', 'location_view'])
                     ->make(true);
             }
+            $graveLocations = GraveGroup::with([
+                'locations.corpseDetail',
+                'locations.request' 
+            ])->get();
 
-            return view('landing-page.request-list');
+            return view('landing-page.request-list', compact('graveLocations'));
         } catch (\Exception $e) {
             if ($request->ajax()) {
                 return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -119,11 +124,39 @@ class HomeController extends Controller
         }
     }
 
-    public function locationList() {
+    public function locationList()
+    {
         $graveLocations = GraveGroup::with('locations.corpseDetail')->get();
         return view(
             'landing-page.location-list',
             compact('graveLocations')
         );
+    }
+
+    public function getRequesterByLocation($locationId)
+    {
+        $request = GraveRequest::where('grave_location_id', $locationId)->latest()->first();
+
+        if (!$request) {
+            return response()->json([
+                'message' => 'Data tidak ditemukan',
+            ], 404);
+        }
+
+        return response()->json([
+            'requester_name' => $request->requester_name,
+            'address'        => $request->address,
+            'phone_number'   => $request->phone_number,
+            'rt'             => $request->rt,
+            'rw'             => $request->rw,
+            'dusun'          => $request->dusun,
+            'corpse_name'    => $request->corpse_name,
+            'birth_date'     => $request->birth_date,
+            'birth_place'    => $request->birth_place,
+            'death_date'     => $request->death_date,
+            'javanese_day'   => $request->javanese_day,
+            'javanese_weton' => $request->javanese_weton,
+            'notes'          => $request->notes,
+        ]);
     }
 }

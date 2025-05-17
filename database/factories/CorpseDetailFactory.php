@@ -23,7 +23,9 @@ class CorpseDetailFactory extends Factory
             'birth_place' => $this->faker->city,
             'age' => $this->faker->numberBetween(1, 100),
             'death_date' => $this->faker->date(),
+            'javanese_day_death' => $this->faker->randomElement(['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']),
             'javanese_weton' => $this->faker->randomElement(['Legi', 'Pahing', 'Pon', 'Wage', 'Kliwon']),
+            
         ];
     }
 }

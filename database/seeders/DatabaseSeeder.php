@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IconSeeder::class,
             MenuSeeder::class,
-            // GraveSeeder::class,
-            // GraveRequestSeeder::class,
+            GraveSeeder::class,
+            GraveRequestSeeder::class,
         ]);
     }
 }

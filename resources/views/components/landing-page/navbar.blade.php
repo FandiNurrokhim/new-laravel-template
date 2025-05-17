@@ -11,15 +11,21 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                @php
+                    $isHome = request()->is('/') || request()->is('home');
+                @endphp
+
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link mx-2 text-white" href="#services">Services</a>
+                        <a class="nav-link mx-2 text-white"
+                            href="{{ $isHome ? '#services' : url('/home#services') }}">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 text-white" href="#faq">Faq</a>
+                        <a class="nav-link mx-2 text-white" href="{{ $isHome ? '#faq' : url('/home#faq') }}">Faq</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 text-white" href="#informasi">Informasi</a>
+                        <a class="nav-link mx-2 text-white"
+                            href="{{ $isHome ? '#informasi' : url('/home#informasi') }}">Informasi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 text-white" href="/request">Buat Permohonan</a>

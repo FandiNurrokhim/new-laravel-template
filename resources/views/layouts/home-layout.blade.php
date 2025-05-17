@@ -64,7 +64,7 @@
             <div class="layout-page bg-white">
                 @include('components.landing-page.navbar')
                 {{-- Navbar --}}
-                <div class="py-5">
+                <div class="py-5 h-full">
                     @yield('content')
                 </div>
                 {{-- Footer --}}

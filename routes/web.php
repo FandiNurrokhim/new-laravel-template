@@ -28,6 +28,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('homepage');
 Route::get('/request', [HomeController::class, 'request'])->name('request');
 Route::get('/request-list', [HomeController::class, 'requestList'])->name('request-list');
 Route::post('/request-send', [GraveRequestController::class, 'store'])->name('create-request');
+Route::get('/grave-location/{location}/requester', [HomeController::class, 'getRequesterByLocation']);
+
 
 Route::get('/location-list', [HomeController::class, 'locationList'])->name('location-list');
 Route::get('/corpse-list', [HomeController::class, 'corpseList'])->name('corpse-list');
