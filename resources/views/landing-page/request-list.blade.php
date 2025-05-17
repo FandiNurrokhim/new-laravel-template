@@ -10,8 +10,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="mb-3">
-                        <label for="grave_location_id" class="form-label">Lokasi Makam <span class="text-danger">(wajib
-                                Diisi)</span></label>
+                        <label for="grave_location_id" class="form-label">Lokasi Makam</label>
 
                         <div class="mb-2">
                             <span class="badge bg-warning text-dark px-3 py-2 me-2" style="font-size: 1em;">
@@ -67,63 +66,57 @@
                 </div>
                 <div class="col-md-4">
                     <div class="mb-3">
-                        <label for="requester_name" class="form-label">Nama Pemohon <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="text" class="form-control" id="requester_name" name="requester_name" required>
+                        <label for="requester_name" class="form-label">Nama Pemohon</label>
+                        <input type="text" class="form-control" id="requester_name" name="requester_name" required
+                            readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label">Alamat Pemohon <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                        <label for="address" class="form-label">Alamat Pemohon</label>
+                        <textarea class="form-control" id="address" name="address" rows="3" required readonly></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="phone_number" class="form-label">Nomor Telepon <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                        <label for="phone_number" class="form-label">Nomor Telepon</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" required readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="rt" class="form-label">RT <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="number" class="form-control" id="rt" name="rt" min="1" required>
+                        <label for="rt" class="form-label">RT</label>
+                        <input type="number" class="form-control" id="rt" name="rt" min="1" required
+                            readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="rw" class="form-label">RW <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="number" class="form-control" id="rw" name="rw" min="1" required>
+                        <label for="rw" class="form-label">RW</label>
+                        <input type="number" class="form-control" id="rw" name="rw" min="1" required
+                            readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="dusun" class="form-label">Dusun <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="text" class="form-control" id="dusun" name="dusun" required>
+                        <label for="dusun" class="form-label">Dusun</label>
+                        <input type="text" class="form-control" id="dusun" name="dusun" required readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="corpse_name" class="form-label">Nama Mayit <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <input type="text" class="form-control" id="corpse_name" name="corpse_name" required>
+                        <label for="corpse_name" class="form-label">Nama Mayit</label>
+                        <input type="text" class="form-control" id="corpse_name" name="corpse_name" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="photo" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                        <div id="photo-preview" class="mt-2 text-muted">Tidak ada foto</div>
                     </div>
                     <div class="mb-3">
                         <label for="birth_date" class="form-label">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="birth_date" name="birth_date"
-                            max="{{ date('Y-m-d') }}">
+                            max="{{ date('Y-m-d') }}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="birth_place" class="form-label">Tempat Lahir</label>
-                        <input type="text" class="form-control" id="birth_place" name="birth_place">
+                        <input type="text" class="form-control" id="birth_place" name="birth_place" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="death_date" class="form-label">Tanggal Meninggal <span class="text-danger">(wajib
-                                Diisi)</span></label>
+                        <label for="death_date" class="form-label">Tanggal Meninggal</label>
                         <input type="date" class="form-control" id="death_date" name="death_date"
-                            max="{{ date('Y-m-d') }}" required>
+                            max="{{ date('Y-m-d') }}" required readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="javanese_day" class="form-label">Hari Meninggal <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <select class="form-select" id="javanese_day" name="javanese_day" required>
+                        <label for="javanese_day" class="form-label">Hari Meninggal</label>
+                        <select class="form-select" id="javanese_day" name="javanese_day" required disabled>
                             <option value="" disabled selected>Pilih Hari</option>
                             <option value="Minggu">Minggu</option>
                             <option value="Senin">Senin</option>
@@ -135,9 +128,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="javanese_weton" class="form-label">Weton Meninggal <span class="text-danger">(wajib
-                                Diisi)</span></label>
-                        <select class="form-select" id="javanese_weton" name="javanese_weton" required>
+                        <label for="javanese_weton" class="form-label">Weton Meninggal</label>
+                        <select class="form-select" id="javanese_weton" name="javanese_weton" required disabled>
                             <option value="" disabled selected>Pilih Weton</option>
                             <option value="Legi">Legi</option>
                             <option value="Pahing">Pahing</option>
@@ -148,7 +140,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="notes" class="form-label">Catatan</label>
-                        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                        <textarea class="form-control" id="notes" name="notes" rows="3" readonly></textarea>
                     </div>
                 </div>
             </div>
@@ -186,7 +178,6 @@
             // Grave box click handler (pastikan ini sesuai dengan selector grave-box di komponen)
             $(document).on('click', '.grave-box-request', function() {
                 var locationId = $(this).data('location-id');
-                // Ganti URL berikut sesuai route yang mengembalikan data pemohon berdasarkan lokasi
                 $.get('/grave-location/' + locationId + '/requester', function(data) {
                     // Isi field form dan set readonly
                     $('#requester_name').val(data.requester_name).prop('readonly', true);
@@ -202,6 +193,14 @@
                     $('#javanese_day').val(data.javanese_day).prop('disabled', true);
                     $('#javanese_weton').val(data.javanese_weton).prop('disabled', true);
                     $('#notes').val(data.notes).prop('readonly', true);
+
+                    // Tampilkan foto jika ada, jika tidak ada tampilkan keterangan
+                    if (data.photo && data.photo !== '') {
+                        $('#photo-preview').html('<img src="' + data.photo +
+                            '" alt="Foto Mayit" class="img-fluid" style="max-width:150px;">');
+                    } else {
+                        $('#photo-preview').html('<div class="text-muted">Tidak ada foto</div>');
+                    }
                 });
             });
         });
