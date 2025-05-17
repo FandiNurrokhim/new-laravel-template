@@ -20,8 +20,8 @@
                                     <strong>Death Date:</strong> {$location->corpseDetail->death_date}<br>
                                     <strong>Javanese Weton:</strong> {$location->corpseDetail->javanese_weton}<br>
                                     <img src='" .
-                                asset($location->corpseDetail->photo ?? 'img/default-photo.jpg') .
-                                "' alt='Photo' style='width: 100px; height: 100px; object-fit: cover;'>
+                                asset($location->corpseDetail->photo ?? 'img/default-photo.png') .
+                                "' alt='Photo' class='img-fluid' width='100' height='100'>
                                 "
                             : 'Kosong';
                     @endphp
