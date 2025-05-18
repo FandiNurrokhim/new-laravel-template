@@ -24,22 +24,25 @@ class GraveLocation extends Model
             if (empty($model->uuid)) {
                 $model->uuid = (string) Str::uuid();
             }
-        
+
             if (empty($model->code)) {
-                $lastLocation = self::where('grave_group_id', $model->grave_group_id)
-                    ->orderBy('id', 'desc')
+                $lastLocation = self::orderBy('id', 'desc')
                     ->first();
-    
-                $lastCode = $lastLocation ? $lastLocation->code : null;
-    
-                if ($lastCode) {
-                    // Ambil angka terakhir dari kode sebelumnya
-                    $number = (int) substr($lastCode, 1);
-                    $model->code = 'A' . str_pad($number + 1, 2, '0', STR_PAD_LEFT);
-                } else {
-                    // Jika belum ada kode, mulai dari A01
-                    $model->code = 'A01';
+
+                $nextNumber = 1;
+                if ($lastLocation && preg_match('/A(\d+)/', $lastLocation->code, $matches)) {
+                    $nextNumber = intval($matches[1]) + 1;
                 }
+
+                do {
+                    $newCode = 'A' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+                    $exists = self::where('grave_group_id', $model->grave_group_id)
+                        ->where('code', $newCode)
+                        ->exists();
+                    $nextNumber++;
+                } while ($exists);
+
+                $model->code = $newCode;
             }
         });
 
@@ -113,11 +116,13 @@ class GraveLocation extends Model
         return $this->hasOne(CorpseDetail::class, 'grave_location_id', 'id');
     }
 
-    public function getCorpsesCount() {
+    public function getCorpsesCount()
+    {
         return $this->hasMany(CorpseDetail::class)->where('grave_location_id', $this->id)->count();
     }
 
-    public function isUsed() {
+    public function isUsed()
+    {
         return $this->corpseDetail()->exists() || $this->request()->exists();
     }
 }

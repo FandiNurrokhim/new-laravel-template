@@ -118,7 +118,7 @@ class GraveGroupController extends Controller
             if (isset($validated['max_graves']) && $validated['max_graves'] < $usedGraves) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Max graves cannot be less than the number of graves already used.',
+                    'message' => 'Maksimum kuburan tidak boleh kurang dari jumlah kuburan yang sudah digunakan.',
                 ], 400);
             }
     

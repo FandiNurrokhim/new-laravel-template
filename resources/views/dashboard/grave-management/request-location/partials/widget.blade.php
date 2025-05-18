@@ -41,7 +41,7 @@
                 <div class="card-body text-sm-end text-center ps-sm-0">
                     <button data-bs-target="#addGraveGroupModal" data-bs-toggle="modal"
                         class="btn btn-primary mb-3 text-nowrap add-new">
-                        Add Lokasi Makam
+                        Tambah Lokasi Makam
                     </button>
                     <p class="mb-0">Tambah Lokasi Makam jika tidak tersedia</p>
                 </div>

@@ -93,7 +93,7 @@ class GraveController extends Controller
             if ($graveLocation->is_confirmed === true) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'The selected location is already occupied.',
+                    'message' => 'Lokasi yang dipilih sudah ada isinya.',
                 ], 400);
             }
 
@@ -119,7 +119,7 @@ class GraveController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Corpse detail successfully created.',
+                'message' => 'Data mayit berhasil dibuat.',
                 'data' => $corpseDetail,
             ], 201);
         } catch (\Exception $e) {
@@ -172,7 +172,7 @@ class GraveController extends Controller
                 if ($newLocation->is_confirmed) {
                     return response()->json([
                         'success' => false,
-                        'message' => 'The selected new location is already occupied.',
+                        'message' => 'Lokasi yang dipilih sudah ada isinya.',
                     ], 400);
                 }
 
@@ -203,7 +203,7 @@ class GraveController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Corpse detail successfully updated.',
+                'message' => 'Data mayit berhasil diperbarui.',
                 'data' => $corpseDetail,
             ]);
         } catch (\Exception $e) {
@@ -234,7 +234,7 @@ class GraveController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Corpse detail successfully deleted.',
+                'message' => 'Data mayit berhasil dihapus.',
             ]);
         } catch (\Exception $e) {
             DB::rollBack();

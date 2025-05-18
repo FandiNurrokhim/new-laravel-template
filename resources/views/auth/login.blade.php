@@ -2,8 +2,8 @@
 
 @section('content')
     <div>
-        <h4 class="mb-2">Welcome to Dashboard! 👋</h4>
-        <p class="mb-4">Please sign-in to your account and start the adventure</p>
+        <h4 class="mb-2">Selamat Datang di Dashboard! 👋</h4>
+        <p class="mb-4">Silakan masuk ke akun Anda untuk memulai petualangan</p>
 
         <form method="POST" action="{{ url('/login') }}">
             @csrf

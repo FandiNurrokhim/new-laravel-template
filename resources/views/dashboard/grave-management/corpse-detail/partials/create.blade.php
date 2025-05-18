@@ -1,6 +1,6 @@
 <div class="modal fade" id="addCorpseDetailModal" tabindex="-1" aria-labelledby="addCorpseDetailModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <form id="addCorpseDetailForm" enctype="multipart/form-data">
             @csrf
             <div class="modal-content">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="group_id" class="form-label">Kelompok Makam</label>
+                        <label for="group_id" class="form-label">Kelompok Makam <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="select2 form-select" id="group_id" name="group_id" required>
                             <option value="" disabled selected>Pilih kelompok</option>
                             @foreach ($graveGroups as $group)
@@ -19,14 +19,14 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="grave_location_id" class="form-label">Lokasi Makam</label>
+                        <label for="grave_location_id" class="form-label">Lokasi Makam <span class="text-danger">(wajib Diisi)</span></label>
                         <div class="d-flex flex-wrap grave-box-container">
                             <!-- Grave boxes will be dynamically populated here -->
                         </div>
                         <input type="hidden" id="grave_location_id" name="grave_location_id" required>
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nama</label>
+                        <label for="name" class="form-label">Nama <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
@@ -34,19 +34,19 @@
                         <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
                     </div>
                     <div class="mb-3">
-                        <label for="birth_date" class="form-label">Tanggal Lahir</label>
+                        <label for="birth_date" class="form-label">Tanggal Lahir <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="date" class="form-control" id="birth_date" name="birth_date"  max="{{ date('Y-m-d') }}"> 
                     </div>
                     <div class="mb-3">
-                        <label for="birth_place" class="form-label">Tempat Lahir</label>
+                        <label for="birth_place" class="form-label">Tempat Lahir <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="text" class="form-control" id="birth_place" name="birth_place">
                     </div>
                     <div class="mb-3">
-                        <label for="death_date" class="form-label">Tanggal Meninggal</label>
+                        <label for="death_date" class="form-label">Tanggal Meninggal <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="date" class="form-control" id="death_date" name="death_date" max="{{ date('Y-m-d') }}">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_javanese_weton" class="form-label">Hari Meniggal</label>
+                        <label for="edit_javanese_weton" class="form-label">Hari Meniggal <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="form-select" id="javanese_day_death" name="javanese_day" required>
                             <option value="" disabled selected>Pilih Hari</option>
                             <option value="Minggu">Minggu</option>
@@ -59,7 +59,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="javanese_weton" class="form-label">Weton</label>
+                        <label for="javanese_weton" class="form-label">Weton <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="form-select" id="javanese_weton" name="javanese_weton">
                             <option value="" disabled selected>Pilih Weton</option>
                             <option value="Legi">Legi</option>

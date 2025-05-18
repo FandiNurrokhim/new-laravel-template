@@ -36,7 +36,8 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 pb-0 mb-2">Grup Makam</h4>
         <p class="mb-4">
-            This page is used to manage grave groups. You can add, edit, and delete grave groups here.
+            Halaman ini digunakan untuk mengelola kelompok kuburan. Anda dapat menambah, mengedit, dan menghapus grup
+            kuburan di sini.
         </p>
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -128,6 +129,7 @@
                     data: $(this).serialize(),
                     success: function(response) {
                         $('#addGraveGroupModal').modal('hide');
+                        $('#addGraveGroupForm')[0].reset();
                         table.ajax.reload();
                         Swal.fire('Success', response.message, 'success');
                     },
@@ -158,7 +160,7 @@
                     for (var i = 0; i < data.max_graves; i++) {
                         var location = data.locations[i]; // Check if location exists
                         var boxColor = location && location.corpseDetail ? 'bg-success' :
-                        'bg-white'; 
+                            'bg-white';
                         var tooltipText = location && location.corpseDetail ? location.corpseDetail
                             .name : 'Kosong';
 

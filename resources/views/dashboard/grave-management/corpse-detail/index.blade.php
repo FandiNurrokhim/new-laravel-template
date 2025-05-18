@@ -36,7 +36,8 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 pb-0 mb-2">Corpse Details</h4>
         <p class="mb-4">
-            Halaman ini digunakan untuk mengelola rincian jenazah. Anda dapat menambah, mengedit, dan menghapus detail jenazah di sini.
+            Halaman ini digunakan untuk mengelola rincian jenazah. Anda dapat menambah, mengedit, dan menghapus detail
+            jenazah di sini.
         </p>
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -102,19 +103,22 @@
                         response.data.forEach(function(location) {
                             var isOccupied = location.corpse_detail !== null;
                             var isSelected = location.id === selectedLocationId;
-                            var boxColor = isOccupied ? 'bg-success' : isSelected ? 'bg-primary' :
-                                'bg-white';
+                            var boxColor = isOccupied ? 'bg-warning text-white' : isSelected ?
+                                'bg-primary text-white' :
+                                'bg-white text-dark';
                             var tooltipText = isOccupied ? location.corpse_detail.name : 'Kosong';
                             var isDisabled = isOccupied ? 'disabled' : '';
 
                             var graveBox = `
-                                <div class="grave-box position-relative m-1 ${boxColor} text-white d-flex align-items-center justify-content-center"
+                                <div class="grave-box position-relative m-1 ${boxColor} d-flex flex-column align-items-center justify-content-center"
                                     data-id="${location.id}"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="${tooltipText}"
-                                    style="width: 40px; height: 40px; border: 1px solid #000; border-radius: 4px; cursor: ${isOccupied ? 'not-allowed' : 'pointer'};"
+                                    style="width: 60px; height: 60px; border: 1px solid #000; border-radius: 4px; cursor: ${isOccupied ? 'not-allowed' : 'pointer'};"
                                     ${isDisabled}>
+                                    <img src="{{ asset('img/icons/svg/tomb.svg') }}" width="20" height="20" alt="Tomb Icon">
+                                    <span style="font-size: 0.9em; margin-top: 2px;">${location.code}</span>
                                 </div>
                             `;
                             graveContainer.append(graveBox);
@@ -158,6 +162,7 @@
                         data-bs-placement="top"
                         title="${tooltipText}"
                         style="width: 40px; height: 40px; border: 1px solid #000; border-radius: 4px; cursor: pointer;">
+                        ${location.code}
                     </div>
                 `;
                 graveContainer.append(graveBox);
@@ -175,17 +180,13 @@
             $(document).on('click', '.grave-box', function() {
                 var isOccupied = $(this).hasClass('bg-success');
                 if (isOccupied) {
-                    Swal.fire('Error', 'This location is already occupied.', 'error');
+                    Swal.fire('Error', 'Lokasi sudah ada isi, tidak dapat dipilih.', 'error');
                     return;
                 }
 
-                // Remove the blue color from previously selected boxes, but skip occupied ones
                 $('.grave-box').not('.bg-success').removeClass('bg-primary').addClass('bg-white');
+                $(this).removeClass('bg-white').addClass('bg-primary text-white');
 
-                // Mark the clicked box as selected
-                $(this).removeClass('bg-white').addClass('bg-primary');
-
-                // Store the selected location ID in a hidden input field
                 var locationId = $(this).data('id');
                 $('#grave_location_id').val(locationId);
             });
@@ -259,6 +260,7 @@
                     contentType: false,
                     success: function(response) {
                         $('#addCorpseDetailModal').modal('hide');
+                        $('#addCorpseDetailForm')[0].reset();
                         table.ajax.reload();
                         Swal.fire('Success', response.message, 'success');
                     },
@@ -305,7 +307,8 @@
                         var deathDate = corpseDetail.death_date ? new Date(corpseDetail
                             .death_date) : null;
                         var javaneseDeathDate = deathDate ?
-                            corpseDetail.javanese_dey_death + ' ' + (corpseDetail.javanese_weton ?? 'N/A') + ' ' +
+                            corpseDetail.javanese_dey_death + ' ' + (corpseDetail.javanese_weton ??
+                                'N/A') + ' ' +
                             deathDate.getFullYear() :
                             'N/A';
 
@@ -333,7 +336,7 @@
                                     if (response.success) {
                                         renderGraveLocations(response.data,
                                             '.grave-box-container', corpseDetail.location.id
-                                            );
+                                        );
                                     } else {
                                         Swal.fire('Error', response.message, 'error');
                                     }

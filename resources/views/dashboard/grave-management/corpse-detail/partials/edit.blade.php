@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="edit_id" name="id">
                     <div class="mb-3">
-                        <label for="edit_group_id" class="form-label">Kelompok Makam</label>
+                        <label for="edit_group_id" class="form-label">Kelompok Makam <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="select2 form-select" id="edit_group_id" name="group_id" required>
                             <option value="" disabled selected>Pilih kelompok</option>
                             @foreach ($graveGroups as $group)
@@ -22,14 +22,14 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="grave_location_id" class="form-label">Lokasi Makam</label>
+                        <label for="grave_location_id" class="form-label">Lokasi Makam <span class="text-danger">(wajib Diisi)</span></label>
                         <div class="d-flex flex-wrap grave-box-container">
                             <!-- Grave boxes will be dynamically populated here -->
                         </div>
                         <input type="hidden" id="grave_location_id" name="grave_location_id" required>
                     </div>
                     <div class="mb-3">
-                        <label for="edit_name" class="form-label">Nama</label>
+                        <label for="edit_name" class="form-label">Nama <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="text" class="form-control" id="edit_name" name="name" required>
                     </div>
                     <div class="mb-3">
@@ -37,19 +37,19 @@
                         <input type="file" class="form-control" id="edit_photo" name="photo" accept="image/*">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_birth_date" class="form-label">Tanggal Lahir</label>
+                        <label for="edit_birth_date" class="form-label">Tanggal Lahir <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="date" class="form-control" id="edit_birth_date" name="birth_date" max="{{ date('Y-m-d') }}">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_birth_place" class="form-label">Tempat Lahir</label>
+                        <label for="edit_birth_place" class="form-label">Tempat Lahir <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="text" class="form-control" id="edit_birth_place" name="birth_place">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_death_date" class="form-label">Tanggal Meninggal</label>
+                        <label for="edit_death_date" class="form-label">Tanggal Meninggal <span class="text-danger">(wajib Diisi)</span></label>
                         <input type="date" class="form-control" id="edit_death_date" name="death_date" max="{{ date('Y-m-d') }}">
                     </div>
                     <div class="mb-3">
-                        <label for="edit_javanese_weton" class="form-label">Hari Meniggal</label>
+                        <label for="edit_javanese_weton" class="form-label">Hari Meniggal <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="form-select" id="edit_javanese_day_death" name="javanese_day" required>
                             <option value="" disabled selected>Pilih Hari</option>
                             <option value="Minggu">Minggu</option>
@@ -62,7 +62,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="edit_javanese_weton" class="form-label">Weton</label>
+                        <label for="edit_javanese_weton" class="form-label">Weton <span class="text-danger">(wajib Diisi)</span></label>
                         <select class="form-select" id="edit_javanese_weton" name="javanese_weton" required>
                             <option value="" disabled selected>Pilih Weton</option>
                             <option value="Legi">Legi</option>

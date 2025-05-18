@@ -41,7 +41,7 @@
                 <div class="card-body text-sm-end text-center ps-sm-0">
                     <button type="button" class="btn btn-primary mb-3 text-nowrap add-new" data-bs-toggle="modal"
                         data-bs-target="#addCorpseDetailModal">
-                        Add Data Mayit
+                        Tambah Data Mayit
                     </button>
                     <p class="mb-0">Tambah Kelompok Makam jika tidak tersedia</p>
                 </div>
