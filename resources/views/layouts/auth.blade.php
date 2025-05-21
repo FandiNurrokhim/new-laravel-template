@@ -75,7 +75,7 @@
                                 <img src="{{ asset('img/Logo purwosari.jpg') }}" alt="Logo" width="40">
                             </span>
                             <span class="app-brand-text demo text-body fw-bolder">
-                                Makan Purwosari
+                                Makam Purwosari
                             </span>
                         </a>
                     </div>
