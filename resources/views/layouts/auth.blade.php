@@ -46,6 +46,15 @@
 
     <script src="{{ asset('vendor/js/template-customizer.js') }}"></script>
     <script src="{{ asset('js/config.js') }}"></script>
+
+    <style>
+        .login-image {
+            background-image: url('{{ asset('img/Login.jpg') }}');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,14 +62,7 @@
 
     <div class="authentication-wrapper authentication-cover">
         <div class="authentication-inner row m-0">
-            <!-- /Left Text -->
-            <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
-                <div class="w-100 d-flex justify-content-center">
-                    <img src="../../assets/img/illustrations/boy-with-rocket-light.png" class="img-fluid"
-                        alt="Login image" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png"
-                        data-app-light-img="illustrations/boy-with-rocket-light.png" />
-                </div>
-            </div>
+            <div class="login-image d-none d-lg-flex col-lg-7 col-xl-8 align-items-center h-full"></div>
             <!-- /Left Text -->
 
             <!-- Login -->

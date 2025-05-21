@@ -5,9 +5,7 @@
     <!-- Hero 6 - Bootstrap Brain Component -->
     <section class=" bg-white">
         <x-landing-page.hero title="Welcome to Mürren" :images="[
-            ['src' => 'img/backgrounds/1.jpg'],
-            ['src' => 'img/backgrounds/2.jpg'],
-            ['src' => 'img/backgrounds/3.jpg'],
+            ['src' => 'img/home.jpg'],
         ]" buttonText="Learn More" buttonLink="/learn-more" />
     </section>
 

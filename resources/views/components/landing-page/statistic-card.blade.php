@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="container-fluid bg-light border shadow">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-md-3 p-0" data-aos="fade-up">
                             <div class="card border-0 bg-transparent">
