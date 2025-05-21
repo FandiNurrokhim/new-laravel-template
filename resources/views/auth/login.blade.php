@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <h4 class="mb-2">Selamat Datang di Dashboard! 👋</h4>
-        <p class="mb-4">Silakan masuk ke akun Anda untuk memulai petualangan</p>
+        <p class="mb-4">Silakan masuk ke akun Anda untuk mengakses halaman admin</p>
 
         <form method="POST" action="{{ url('/login') }}">
             @csrf

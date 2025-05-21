@@ -9,9 +9,9 @@
                     <div class="row justify-content-xl-center">
                         <div class="col-12 col-xl-10">
                             <h2 class="mb-3">Informasi</h2>
-                            <p class="lead fs-4 mb-3 mb-xl-5">With years of experience and deep industry knowledge, we
-                                have a proven track record of success and are constantly pushing ourselves to stay ahead
-                                of the curve.</p>
+                            <p class="lead fs-4 mb-3 mb-xl-5">Sistem Informasi Pengelolaan Makam adalah aplikasi berbasis web yang dirancang untuk membantu proses administrasi, pencatatan, dan layanan publik terkait makam di suatu wilayah. Sistem ini bertujuan untuk mempermudah pencarian data makam, mengelola pemakaman baru, dan mempercepat proses pelayanan kepada masyarakat secara digital dan transparan.
+
+</p>
                             <div class="d-flex align-items-center mb-3">
                                 <div class="me-3 text-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -21,7 +21,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="fs-5 m-0">Our evolution procedure is super intelligent.</p>
+                                    <p class="fs-5 m-0">1. Digitalisasi Administrasi Pemakaman</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-3">
@@ -33,7 +33,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="fs-5 m-0">We deliver services beyond expectations.</p>
+                                    <p class="fs-5 m-0">2. Layanan Publik yang Transparan dan Cepat</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-4 mb-xl-5">
@@ -45,7 +45,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="fs-5 m-0">Let's hire us to reach your objectives.</p>
+                                    <p class="fs-5 m-0">3. Pengelolaan Data Makam yang Terstruktur</p>
                                 </div>
                             </div>
                         </div>

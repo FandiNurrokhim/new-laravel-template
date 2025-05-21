@@ -34,7 +34,7 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 pb-0 mb-2">Corpse Details</h4>
+        <h4 class="fw-bold py-3 pb-0 mb-2">Data Mayit</h4>
         <p class="mb-4">
             Halaman ini digunakan untuk mengelola rincian jenazah. Anda dapat menambah, mengedit, dan menghapus detail
             jenazah di sini.
@@ -93,8 +93,8 @@
 
 
         function fetchGraveLocations(groupId, locationContainerClass, selectedLocationId = null) {
-            var graveContainer = $(locationContainerClass);
-            graveContainer.empty(); // Clear previous locations
+            var graveContainer = $(locationContainerClass); 
+            graveContainer.empty();
 
             if (groupId) {
                 $.get('{{ url('/api/grave-locations') }}/' + groupId, function(response) {
@@ -272,7 +272,7 @@
 
             $(document).on('click', '.btn-edit', function() {
                 var id = $(this).data('id');
-                $.get('{{ url('dashboard/corpse-detail') }}/' + id, function(data) {
+                $.get('{{ url('dashboard/grave') }}/' + id, function(data) {
                     // Populate the form fields with the corpse detail data
                     $('#edit_id').val(data.data.id);
                     $('#edit_name').val(data.data.name);
@@ -284,7 +284,7 @@
                     $('#edit_group_id').val(data.data.location.group.id).trigger('change');
 
                     // Fetch and render grave locations for the selected group
-                    fetchAndRenderLocations(data.data.location.group.id, data.data.location.id);
+                    fetchGraveLocations(data.data.location.group.id, data.data.location.id);
 
                     // Show the modal
                     $('#editCorpseDetailModal').modal('show');
@@ -294,7 +294,7 @@
             // Fetch locations dynamically when the group is changed in the Edit Modal
             $('#edit_group_id').on('change', function() {
                 var groupId = $(this).val();
-                fetchAndRenderLocations(groupId);
+                fetchGraveLocations(groupId);
             });
 
             $(document).on('click', '.btn-detail', function() {

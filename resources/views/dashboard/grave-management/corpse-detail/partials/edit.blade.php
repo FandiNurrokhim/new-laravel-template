@@ -1,7 +1,6 @@
-<!-- filepath: c:\joki program skripsi\iqsan\makam-management\resources\views\dashboard\grave-management\corpse-detail\partials\edit.blade.php -->
 <div class="modal fade" id="editCorpseDetailModal" tabindex="-1" aria-labelledby="editCorpseDetailModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <form id="editCorpseDetailForm" enctype="multipart/form-data">
             @csrf
             @method('PUT')

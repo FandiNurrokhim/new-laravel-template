@@ -11,12 +11,12 @@
         ]" buttonText="Learn More" buttonLink="/learn-more" />
     </section>
 
-    <x-landing-page.statistic-card />
+    <x-landing-page.statistic-card :corpse-count="$corpseCount" :grave-used-count="$graveUsedCount" :form-request-count="$formRequestCount" :form-request-this-month-count="$formRequestThisMonthCount" />
     <x-landing-page.services />
     <x-landing-page.faq />
-    
+
     <div class="p-5 text-center bg-image"
-    style="
+        style="
             background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
             background-size: cover;
             background-position: center;
@@ -26,7 +26,7 @@
             position: relative;
             ">
         <div class="mask"
-        style="
+            style="
                 background-color: rgba(0, 0, 0, 0.6);
                 position: absolute;
                 top: 0; left: 0; right: 0; bottom: 0;
@@ -36,12 +36,10 @@
                 align-items: center;
                 ">
             <div class="text-white">
-                <h1 class="mb-3 text-white">Heading</h1>
-                <h4 class="mb-3 text-white">Subheading</h4>
-                <a class="btn btn-outline-light text-white btn-lg" href="#" role="button">Call to action</a>
+                <h1 class="mb-3 text-white">Sistem Informasi Pengelolaan Makam</h1>
             </div>
         </div>
     </div>
-    
+
     <x-landing-page.information />
 @endsection
