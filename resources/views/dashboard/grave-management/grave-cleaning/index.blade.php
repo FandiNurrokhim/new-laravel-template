@@ -3,6 +3,16 @@
 @section('title', 'Manajemen Permintaan Lokasi Makam')
 
 @section('content')
+    <style>
+        #grave-cleaning-request-table td:nth-child(8),
+        #grave-cleaning-request-table th:nth-child(8) {
+            min-width: 400px;
+            max-width: 700px;
+            width: 700px;
+            white-space: normal !important;
+            word-break: break-word;
+        }
+    </style>
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 pb-0 mb-2">Permintaan Pembersihan Makam</h4>
         <div class="card">
@@ -80,10 +90,15 @@
                     {
                         data: 'grave_detail',
                         name: 'grave_detail',
+                        width: '700px',
+                        orderable: false,
+                        searchable: false,
                     },
                     {
                         data: 'proof_photo',
                         name: 'proof_photo',
+                        orderable: false,
+                        searchable: false,
                     },
                     {
                         data: 'payment_status',
