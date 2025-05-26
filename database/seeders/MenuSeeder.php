@@ -81,5 +81,13 @@ class MenuSeeder extends Seeder
             'icon' => 'bx bx-map', // Updated icon
             'route' => 'grave-request.index'
         ]);
+
+        Menu::create([
+            'type' => 'PARENT',
+            'header' => 'Manajemen Kuburan',
+            'title' => 'Permintaan Pembersihan',
+            'icon' => 'bx bx-brush', 
+            'route' => 'grave-cleaning-request.index'
+        ]);
     }
 }

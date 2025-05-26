@@ -24,6 +24,7 @@ class RolePermissionSeeder extends Seeder
             'grave',
             'grave-group',
             'grave-request',
+            'grave-cleaning-request',
 
             // SYSTEM
             'settings',

@@ -6,20 +6,24 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class GraveRequest extends Model
+class GraveCleaningRequest extends Model
 {
     use HasFactory;
+
+    protected $table = 'grave_cleaning_request';
+
     protected $fillable = [
         'requester_name',
+        'price',
         'address',
         'phone_number',
+        'proof_photo',
         'rt',
         'rw',
         'dusun',
-        'corpse_name',
         'grave_location_id',
-        'status',
-        'notes',
+        'payment_status',
+        'work_status',
     ];
 
     protected static function booted()

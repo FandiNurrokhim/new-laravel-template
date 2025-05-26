@@ -111,6 +111,11 @@ class GraveLocation extends Model
         return $this->hasOne(GraveRequest::class);
     }
 
+    public function cleaningRequest()
+    {
+        return $this->hasOne(GraveCleaningRequest::class);
+    }
+
     public function corpseDetail()
     {
         return $this->hasOne(CorpseDetail::class, 'grave_location_id', 'id');

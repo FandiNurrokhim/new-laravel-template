@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Grave;
 
+use App\Models\GraveCleaningRequest;
 use App\Models\GraveRequest;
 use Illuminate\Http\Request;
 use App\Models\GraveLocation;
@@ -88,6 +89,7 @@ class GraveRequestController extends Controller
             ], 500);
         }
     }
+
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -119,6 +121,46 @@ class GraveRequestController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+    public function storeCleaningRequest(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $validated = $request->validate([
+                'requester_name' => 'required|string|max:255',
+                'address' => 'required|string|max:255',
+                'phone_number' => 'nullable',
+                'rt' => 'nullable|string|max:10',
+                'rw' => 'nullable|string|max:10',
+                'dusun' => 'nullable|string|max:255',
+                'grave_location_id' => 'required|exists:grave_locations,id',
+            ]);
+
+            $exists = GraveCleaningRequest::where('grave_location_id', $validated['grave_location_id'])
+                ->where('work_status', '!=', 'completed') // boleh disesuaikan
+                ->exists();
+
+            if ($exists) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Permintaan pembersihan untuk lokasi ini sudah terdaftar dan belum diselesaikan.',
+                ], 409); 
+            }
+
+            GraveCleaningRequest::create($validated);
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Permintaan pembersihan berhasil, silahkan lanjutkan pembayaran ke WA.',
+            ], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
 
     public function update(Request $request, $id)
     {

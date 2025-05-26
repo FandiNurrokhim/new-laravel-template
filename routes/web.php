@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Grave\GraveCleaningController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -21,13 +22,15 @@ use App\Models\GraveRequest;
 
 // Redirect root
 Route::get('/', function () {
-    return Auth::check() ? redirect()->route('dashboard') : redirect()->route('homepage');
+    return Auth::check() ? redirect()->route('dashboard') : redirect()->route('request');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('homepage');
 Route::get('/request', [HomeController::class, 'request'])->name('request');
+Route::get('/request-cleaning', [HomeController::class, 'requestCleaning'])->name('request-leaning');
 Route::get('/request-list', [HomeController::class, 'requestList'])->name('request-list');
 Route::post('/request-send', [GraveRequestController::class, 'store'])->name('create-request');
+Route::post('/request-cleaning-send', [GraveRequestController::class, 'storeCleaningRequest'])->name('create-cleaning-request');
 Route::get('/grave-location/{location}/requester', [HomeController::class, 'getRequesterByLocation']);
 
 
@@ -70,21 +73,12 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     Route::resource('grave', GraveController::class)->middleware('check.permission:grave');
     Route::resource('grave-group', GraveGroupController::class)->middleware('check.permission:grave-group');
     Route::resource('grave-request', GraveRequestController::class)->middleware('check.permission:grave-request');
+    Route::resource('grave-cleaning-request', GraveCleaningController::class)->middleware('check.permission:grave-cleaning-request');
+    Route::post('/grave-cleaning-request/{id}/upload-proof', [GraveCleaningController::class, 'uploadProof'])
+        ->name('grave-cleaning-request.upload-proof')
+        ->middleware('check.permission:grave-cleaning-request');
 
     Route::get('licenses', fn() => 'PAGE LICENSES')
         ->name('licenses.index')
         ->middleware('check.permission:licenses');
-
-    // System Settings (Super Admin only)
-    Route::get('settings', fn() => 'PAGE SYSTEM SETTINGS')
-        ->name('settings.index')
-        ->middleware('check.permission:settings');
-
-    Route::get('activity-log', fn() => 'PAGE ACTIVITY LOG')
-        ->name('activity-log.index')
-        ->middleware('check.permission:activity-log');
-
-    Route::get('search-logs', fn() => 'PAGE SEARCH LOGS')
-        ->name('search-logs.index')
-        ->middleware('check.permission:search-logs');
 });

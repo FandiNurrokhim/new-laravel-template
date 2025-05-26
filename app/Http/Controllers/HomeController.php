@@ -36,6 +36,15 @@ class HomeController extends Controller
         );
     }
 
+    public function requestCleaning()
+    {
+        $graveLocations = GraveGroup::with('locations.corpseDetail')->get();
+        return view(
+            'landing-page.request-cleaning',
+            compact('graveLocations')
+        );
+    }
+
     public function requestList(Request $request)
     {
         try {
