@@ -66,6 +66,28 @@
                       </svg>
                   </a>
               </div>
+              <div class="col-11 col-sm-6 col-lg-3" data-aos="fade-up-right">
+                  <div class="badge bg-primary p-3 mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-bucket" viewBox="0 0 16 16">
+                          <path
+                              d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5m1.005 0a4.5 4.5 0 0 1 8.945 0zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z" />
+                      </svg>
+                  </div>
+                  <h4 class="mb-3"> Permohonan Pembersihan Makam</h4>
+                  <p class="mb-3 text-dark">
+                      Mengajukan permohonan pembersihan makam secara online.
+                      Melihat status permohonan dan progres pembersihan oleh petugas makam.
+                  </p>
+                  <a href="/request-cleaning" class="fw-bold text-decoration-none link-primary">
+                      Buat permohonan
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                              d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                      </svg>
+                  </a>
+              </div>
           </div>
       </div>
   </section>

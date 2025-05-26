@@ -28,6 +28,9 @@
                             href="{{ $isHome ? '#informasi' : url('/home#informasi') }}">Informasi</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link mx-2 text-white" href="/request-cleaning">Pembersihan Makam</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link mx-2 text-white" href="/request">Buat Permohonan</a>
                     </li>
                     <li class="nav-item">
