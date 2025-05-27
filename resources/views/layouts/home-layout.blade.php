@@ -46,11 +46,49 @@
     <script src="{{ asset('js/config.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <style>
         #map {
             height: 600px;
             width: 100%;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #1ebe5d;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .whatsapp-float:hover .text {
+            color: white;
+        }
+
+        .whatsapp-float i {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .whatsapp-float .text {
+            font-weight: 500;
+            font-size: 14px;
+            color: white;
         }
     </style>
 </head>
@@ -66,6 +104,12 @@
                 {{-- Navbar --}}
                 <div class="py-5 h-full">
                     @yield('content')
+
+                    <a href="https://api.whatsapp.com/send?phone=6282231528080&text=Halo%20saya%20ingin%20bertanya%20mengenai%20sistem%20makam%20purwosari."
+                        class="whatsapp-float" target="_blank">
+                        <i class="fa fa-whatsapp"></i>
+                        <span class="text">Chat Admin</span>
+                    </a>
                 </div>
                 {{-- Footer --}}
                 @include('components.landing-page.footer')
