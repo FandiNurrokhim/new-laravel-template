@@ -44,6 +44,7 @@
                         data-death-date="{{ $location->corpseDetail->death_date ?? '' }}"
                         data-javanese-weton="{{ $location->corpseDetail->javanese_weton ?? '' }}"
                         data-bs-toggle="tooltip" data-bs-html="true" title="{!! $tooltipText !!}">
+                        <span class="me-1 fw-bold">{{ $loop->iteration }}</span>
                         <img src="{{ asset('img/icons/svg/tomb.svg') }}" width="20" height="20" alt="Tomb Icon">
                     </div>
                 @endforeach
