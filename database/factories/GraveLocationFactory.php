@@ -19,7 +19,6 @@ class GraveLocationFactory extends Factory
         return [
             'grave_group_id' => null, 
             'order' => 0,
-            'code' => $this->faker->unique()->word,
             'is_reserved' => false,
             'is_confirmed' => false,
         ];

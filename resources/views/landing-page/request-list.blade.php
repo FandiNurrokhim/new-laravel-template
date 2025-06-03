@@ -55,7 +55,7 @@
                                             data-occupied="{{ $isOccupied ? '1' : '0' }}"
                                             data-requested="{{ $hasRequester ? '1' : '0' }}" data-bs-toggle="tooltip"
                                             data-bs-html="true" title="{{ $tooltipText }}">
-                                            <span class="me-1 fw-bold">{{ $loop->iteration }}</span>
+                                            <span class="me-1 fw-bold">{{ $location->code }}</span>
                                             
                                             <img src="{{ asset('img/icons/svg/tomb.svg') }}" width="20" height="20"
                                                 alt="Tomb Icon">
@@ -219,9 +219,8 @@
                     [10, 'desc']
                 ],
                 columns: [{
-                        data: 'id',
-                        name: 'id',
-                        title: 'No'
+                        data: 'grave_code',
+                        name: 'no',
                     },
                     {
                         data: 'requester_name',

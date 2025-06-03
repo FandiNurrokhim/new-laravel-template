@@ -69,15 +69,19 @@ class HomeController extends Controller
 
                         return '<span class="badge ' . $badgeClass . '">' . $label . '</span>';
                     })
+                    ->addColumn('grave_code', function ($row) {
+                        $code = $row->location?->code ?? '-';
+                        return '<span class="badge bg-dark">' . $code . '</span>';
+                    })
                     ->addColumn('location_view', function ($row) {
                         return '<button class="btn btn-info btn-sm btn-view-location" data-id="' . $row->location->group->id . '" data-location-id="' . $row->grave_location_id . '">Lihat Lokasi</button>';
                     })
-                    ->rawColumns(['status', 'location_view'])
+                    ->rawColumns(['status', 'location_view', 'grave_code'])
                     ->make(true);
             }
             $graveLocations = GraveGroup::with([
                 'locations.corpseDetail',
-                'locations.request' 
+                'locations.request'
             ])->get();
 
             return view('landing-page.request-list', compact('graveLocations'));
